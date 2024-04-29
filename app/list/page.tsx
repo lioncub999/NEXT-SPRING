@@ -1,11 +1,12 @@
 'use client'
 
-import {Button, Table} from "react-bootstrap";
+import {Button, Pagination, Table} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
-import {Board, board} from "@/apis";
+import {APIResponse, Board, board, boardPageInfo} from "@/apis";
 
 export default function List(props: any) {
-    const [boardList, setBoardList] = useState<board[]>();
+    const [boardList, setBoardList] = useState<APIResponse<boardPageInfo>>();
+    const [totalBoardCount, setTotalBoardCount] = useState<number>(0);
     const [loadingBar, setLoadingBar] = useState<boolean>(true);
 
     async function deleteBoard(id: number | undefined) {
@@ -14,9 +15,17 @@ export default function List(props: any) {
         fetchData()
     }
 
+    async function likeBoard(id: number) {
+        await Board.likeBoard(id);
+        await props.toastOn('따봉~👍👍👍', 'default')
+        await fetchData();
+    }
+
     async function fetchData() {
         const data = await Board.getBoardList();
-        setBoardList(data.data);
+        console.log(data.data.respTime)
+        setBoardList(data.data.boardList);
+        setTotalBoardCount(data.data.totalBoardCount);
         setLoadingBar(false);
         return data
     }
@@ -38,14 +47,18 @@ export default function List(props: any) {
             <Table striped bordered hover>
                 <colgroup>
                     <col width={"30%"}></col>
+                    <col width={"5%"}></col>
+                    <col width={"5%"}></col>
                     <col width={"10%"}></col>
-                    <col width={"30%"}></col>
+                    <col width={"20%"}></col>
                     <col width={"15%"}></col>
                     <col width={"15%"}></col>
                 </colgroup>
                 <thead>
                 <tr style={{textAlign: "center", verticalAlign: "middle"}}>
                     <th>TITLE</th>
+                    <th>따봉수</th>
+                    <th>개추</th>
                     <th>쓴사람</th>
                     <th>언제씀</th>
                     <th>수정</th>
@@ -61,9 +74,13 @@ export default function List(props: any) {
                             return (
                                 <tr key={i} style={{textAlign: "center", verticalAlign: "middle"}}>
                                     <td>{a.title}</td>
+                                    <td>{a.thumb}</td>
+                                    <td><span style={{cursor: "pointer"}} onClick={function () {
+                                        likeBoard(a.id);
+                                    }}>👍🏿</span></td>
                                     <td>{a.creId}</td>
                                     <td style={{textAlign: "left"}}>{a.creDtm}</td>
-                                    <td><Button variant="outline-primary" onClick={function() {
+                                    <td><Button variant="outline-primary" onClick={function () {
                                         props.setUpdateUserId(a.id)
                                         props.setCurrentPage('update')
                                     }}
@@ -84,6 +101,24 @@ export default function List(props: any) {
                 }
                 </tbody>
             </Table>
+
+            <Pagination style={{justifyContent: "center"}}>
+                {/*<Pagination.First/>*/}
+                {/*<Pagination.Prev/>*/}
+                {/*<Pagination.Ellipsis/>*/}
+                {/*<Pagination.Item disabled>{14}</Pagination.Item>*/}
+
+                {
+                    totalBoardCount > 0 ?
+                        <Pagination.Item active>{1}</Pagination.Item>
+                        :
+                        null
+                }
+
+
+                {/*<Pagination.Next/>*/}
+                {/*<Pagination.Last/>*/}
+            </Pagination>
         </div>
     )
 }

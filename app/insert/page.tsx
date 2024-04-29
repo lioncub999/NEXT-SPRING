@@ -8,7 +8,8 @@ export default function Insert(props:any) {
     const [title, setTitle] = useState<string>()
     async function insertBoard(title: string | undefined) {
         await Board.insertBoard(title);
-        await props.toastOn('레전드 글이네요.', 'success')
+        await props.toastOn('레전드 글이네요.', 'success');
+        await props.setCurrentPage('list');
     }
 
 

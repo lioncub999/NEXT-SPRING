@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "start": "next start",
     "local:dev": "env-cmd -e dev-local next dev",
     "local:build": "env-cmd -e build-local next build",
     "dev:dev": "env-cmd -e dev-development next dev",
     "dev:build": "env-cmd -e build-development next build",
-    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {

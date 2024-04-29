@@ -36,6 +36,17 @@ export default function Home() {
                 progress: undefined,
                 theme: "light",
             });
+        } else if (type == 'default') {
+            toast(toastMsg, {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
@@ -52,10 +63,17 @@ export default function Home() {
                         setCurrentPage={setCurrentPage}
                         setUpdateUserId={setUpdateUserId}
                     /> :
+
                     currentPage == 'insert' ?
-                        <Insert toastOn={toastOn}/> :
+                        <Insert toastOn={toastOn}
+                                setCurrentPage={setCurrentPage}
+                        /> :
+
                         currentPage == 'update' ?
-                            <Update updateUserId={updateUserId} />
+                            <Update updateUserId={updateUserId}
+                                    toastOn={toastOn}
+                                    setCurrentPage={setCurrentPage}
+                            />
                             : null
                 }
             </div>
