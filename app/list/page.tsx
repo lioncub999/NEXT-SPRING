@@ -5,7 +5,7 @@ import React, {useEffect, useState} from "react";
 import {APIResponse, Board, board, boardPageInfo} from "@/apis";
 
 export default function List(props: any) {
-    const [boardList, setBoardList] = useState<APIResponse<boardPageInfo>>();
+    const [boardList, setBoardList] = useState<board[]>();
     const [totalBoardCount, setTotalBoardCount] = useState<number>(0);
     const [loadingBar, setLoadingBar] = useState<boolean>(true);
 
@@ -23,7 +23,7 @@ export default function List(props: any) {
 
     async function fetchData() {
         const data = await Board.getBoardList();
-        console.log(data.data.respTime)
+        console.log(data.data)
         setBoardList(data.data.boardList);
         setTotalBoardCount(data.data.totalBoardCount);
         setLoadingBar(false);
