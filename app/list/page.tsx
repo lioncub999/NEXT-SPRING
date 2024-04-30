@@ -23,7 +23,6 @@ export default function List(props: any) {
 
     async function fetchData() {
         const data = await Board.getBoardList();
-        console.log(data.data)
         setBoardList(data.data.boardList);
         setTotalBoardCount(data.data.totalBoardCount);
         setLoadingBar(false);
