@@ -3,7 +3,7 @@ import {Inter} from "next/font/google";
 import "./globals.css";
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Topnav from "@/app/component/topnav";
+import Sidenav from "@/app/component/sidenav";
 import {toast, ToastContainer} from "react-toastify";
 import {Board} from "@/apis";
 
@@ -18,7 +18,7 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
 }>) {
     return (
         <html lang="en">
-        <body className={inter.className}>
+        <body className={inter.className} style={{background : "#E1E8EE"}}>
         {children}
         </body>
         </html>

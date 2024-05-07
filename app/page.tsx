@@ -2,15 +2,15 @@
 
 import React, {useEffect, useState} from "react";
 import {board, Board, TEST} from "@/apis";
-import List from "@/app/list/page";
-import Topnav from "@/app/component/topnav";
+import Main from "@/app/main/page";
+import Sidenav from "@/app/component/sidenav";
 import Insert from "@/app/insert/page";
 import {toast, ToastContainer} from "react-toastify";
 import Update from "@/app/update/page";
 
 export default function Home() {
 
-    const [currentPage, setCurrentPage] = useState<string>('list')
+    const [currentPage, setCurrentPage] = useState<string>('a')
     const [updateUserId, setUpdateUserId] = useState<number>(0)
 
     async function toastOn(toastMsg: string, type: string) {
@@ -51,33 +51,16 @@ export default function Home() {
     }
 
     return (
-        <div>
+        <>
             <div>
                 <ToastContainer/>
             </div>
-            <Topnav setCurrentPage={setCurrentPage}/>
-            <div className="cont-box">
-                {currentPage == 'list' ?
-                    <List
-                        toastOn={toastOn}
-                        setCurrentPage={setCurrentPage}
-                        setUpdateUserId={setUpdateUserId}
-                    /> :
-
-                    currentPage == 'insert' ?
-                        <Insert toastOn={toastOn}
-                                setCurrentPage={setCurrentPage}
-                        /> :
-
-                        currentPage == 'update' ?
-                            <Update updateUserId={updateUserId}
-                                    toastOn={toastOn}
-                                    setCurrentPage={setCurrentPage}
-                            />
-                            : null
-                }
-            </div>
-
-        </div>
+            <Sidenav setCurrentPage={setCurrentPage}/>
+            <main>
+                <div className="form-structor">
+                    <Main />
+                </div>
+            </main>
+        </>
     );
 }

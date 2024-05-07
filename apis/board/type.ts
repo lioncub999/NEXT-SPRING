@@ -10,3 +10,15 @@ export interface board {
     creId: string;
     creDtm: string;
 }
+
+export interface ttt {
+    GlobalJobCounselRst : {
+        list_total_count : number;
+        row : aaa[];
+    };
+}
+
+export interface aaa {
+    CATEGORY_NM : string;
+    TYPE1 : number;
+}
