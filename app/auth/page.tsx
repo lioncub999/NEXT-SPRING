@@ -9,7 +9,6 @@ export default function Auth() {
 
     async function testLogin() {
         const data = await TEST.testLogin();
-        console.log(data)
     }
 
     const [loginOrSignin, setLoginOrSignin] = useState(true)
@@ -33,6 +32,9 @@ export default function Auth() {
                                                style={{width : "160px"}}
                                         />
                                         <button type="button" className={styles.dupcheckBtn}
+                                                onClick={function() {
+                                                    TEST.testLogin();
+                                                }}
                                         >
                                             중복확인
                                         </button>
@@ -53,6 +55,9 @@ export default function Auth() {
                                 </form>
                             </div>
                             <button className={styles.submitBtn} id="submit-btn" type="button"
+                                    onClick={function() {
+                                        TEST.getTest();
+                                    }}
                             >Sign Up
                             </button>
                         </div>

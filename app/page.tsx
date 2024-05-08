@@ -7,7 +7,6 @@ import {toast, ToastContainer} from "react-toastify";
 import Auth from "@/app/auth/page";
 
 export default function Home() {
-
     const [currentPage, setCurrentPage] = useState<string>('login')
 
     async function toastOn(toastMsg: string, type: string) {

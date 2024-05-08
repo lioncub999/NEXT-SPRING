@@ -3,9 +3,7 @@ import {Inter} from "next/font/google";
 import "./globals.css";
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Sidenav from "@/app/component/sidenav";
-import {toast, ToastContainer} from "react-toastify";
-import {Board} from "@/apis";
+import { SessionProvider } from "next-auth/react"
 
 const inter = Inter({subsets: ["latin"]});
 
