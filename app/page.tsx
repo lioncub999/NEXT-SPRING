@@ -1,17 +1,14 @@
 'use client'
 
 import React, {useEffect, useState} from "react";
-import {board, Board, TEST} from "@/apis";
 import Main from "@/app/main/page";
 import Sidenav from "@/app/component/sidenav";
-import Insert from "@/app/insert/page";
 import {toast, ToastContainer} from "react-toastify";
-import Update from "@/app/update/page";
+import Auth from "@/app/auth/page";
 
 export default function Home() {
 
-    const [currentPage, setCurrentPage] = useState<string>('a')
-    const [updateUserId, setUpdateUserId] = useState<number>(0)
+    const [currentPage, setCurrentPage] = useState<string>('login')
 
     async function toastOn(toastMsg: string, type: string) {
         if (type == 'success') {
@@ -55,12 +52,17 @@ export default function Home() {
             <div>
                 <ToastContainer/>
             </div>
-            <Sidenav setCurrentPage={setCurrentPage}/>
-            <main>
-                <div className="form-structor">
-                    <Main />
-                </div>
-            </main>
+            {
+                currentPage == 'login' ?
+                    null :
+                    <Sidenav setCurrentPage={setCurrentPage}/>
+            }
+            {
+                currentPage == 'login' ?
+                    <Auth/>
+                    :
+                    <Main/>
+            }
         </>
     );
 }

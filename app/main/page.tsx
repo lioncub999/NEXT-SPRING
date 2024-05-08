@@ -13,15 +13,17 @@ export default function List(props: any) {
     }, []);
 
     return (
-        <>
-            <section className="content">
-                <div className="left-content">
-                    left
-                </div>
-                <div className="right-content">
-                    right
-                </div>
-            </section>
-        </>
+        <main>
+            <div className="form-structor">
+                <section className="content">
+                    <div className="left-content">
+                        left
+                    </div>
+                    <div className="right-content">
+                        right
+                    </div>
+                </section>
+            </div>
+        </main>
     )
 }

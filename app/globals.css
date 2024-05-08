@@ -1,3 +1,4 @@
+
 *,
 *::before,
 *::after {
@@ -153,7 +154,7 @@ main {
     height : 80%;
     box-shadow: 0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset,
     0 0 0 0 rgba(255, 255, 255, 0.66) inset, 0 4px 16px rgba(0, 0, 0, 0.12);
-    border-radius: 0 15px 15px 0;
+    border-radius: 15px;
     z-index: 10;
 }
 
@@ -165,11 +166,7 @@ main {
     overflow: hidden;
     background: rgb(254, 254, 254);
 }
-.content {
-    background: rgb(254, 254, 254);
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
+
 .left-content {
     display: grid;
     height : 780px;

@@ -29,6 +29,7 @@
     "react-bootstrap": "^2.10.2",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
+    "react-session-api": "^1.1.0",
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {
