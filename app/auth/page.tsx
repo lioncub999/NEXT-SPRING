@@ -9,6 +9,8 @@ export default function Auth() {
 
     async function testLogin() {
         const data = await TEST.testLogin();
+        console.log(data.data.token)
+        localStorage.setItem("token", data.data.token)
     }
 
     const [loginOrSignin, setLoginOrSignin] = useState(true)
@@ -33,7 +35,7 @@ export default function Auth() {
                                         />
                                         <button type="button" className={styles.dupcheckBtn}
                                                 onClick={function() {
-                                                    TEST.testLogin();
+                                                    testLogin();
                                                 }}
                                         >
                                             중복확인
