@@ -65,12 +65,23 @@ export default function Home() {
                 progress: undefined,
                 theme: "light",
             });
+        } else if (type == 'error') {
+            toast.error(toastMsg, {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
     return (
         <>
-            <ToastContainer/>
+            <ToastContainer />
             {
                 currentPage == 'login' ?
                     null :

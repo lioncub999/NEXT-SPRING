@@ -54,6 +54,36 @@
         background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf884ad570b50659c5fa2dc2cfb20ecf&auto=format&fit=crop&w=1000&q=100');
     }
 
+    .inputBox {
+        display : flex;
+        justify-content : space-between;
+        align-items : center;
+    }
+
+    .dupCheckBox {
+        width: 70px;
+        align-items: center;
+
+        .dupCheckBtn {
+            background-color: #6B92A4;
+            color: rgba(256, 256, 256, 0.7);
+            border: 0;
+            border-radius: 15px;
+            width: 65px;
+            height : 30px;
+            font-size: 13px;
+            cursor: pointer;
+            opacity: 1;
+            visibility: visible;
+            -webkit-transition: all .3s ease;
+
+            &:hover {
+                transition: all .3s ease;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+        }
+    }
+
     .signup {
         position: relative;
         top: 65%;
@@ -95,7 +125,7 @@
                 padding: 8px 15px;
                 border-bottom: 1px solid #eee;
                 width: 100%;
-                font-size: 12px;
+                font-size: 14px;
 
                 &:last-child {
                     border-bottom: 0;
@@ -126,6 +156,11 @@
                 transition: all .3s ease;
                 background-color: rgba(0, 0, 0, 0.8);
             }
+            &.regComp {
+                color : rgba(0, 0, 0, 0.36);
+                background: rgba(128, 128, 128, 0.42);
+                border: black;
+            }
         }
 
         &.slideUp {
@@ -151,26 +186,6 @@
             opacity: 1;
             visibility: visible;
             -webkit-transition: all .1s ease;
-        }
-    }
-
-
-    .dupcheckBtn {
-        background-color: #6B92A4;
-        color: rgba(256, 256, 256, 0.7);
-        border: 0;
-        border-radius: 15px;
-        width: 65px;
-        height : 30px;
-        font-size: 13px;
-        cursor: pointer;
-        opacity: 1;
-        visibility: visible;
-        -webkit-transition: all .3s ease;
-
-        &:hover {
-            transition: all .3s ease;
-            background-color: rgba(0, 0, 0, 0.8);
         }
     }
 
@@ -238,7 +253,7 @@
                     padding: 8px 15px;
                     border-bottom: 1px solid #eee;
                     width: 100%;
-                    font-size: 12px;
+                    font-size: 14px;
 
                     &:last-child {
                         border-bottom: 0;
