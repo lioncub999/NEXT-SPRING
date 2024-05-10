@@ -91,11 +91,15 @@ export default function Auth(props: any) {
             } else {
                 try {
                     const data = await auth.login(loginNm, loginPw);
+                    if (data.data.token != null) {
                     localStorage.setItem("token", data.data.token)
                     await props.toastOn("로그인 되었습니다.", "success");
                     props.setCurrentPage("main")
+                    } else {
+                        props.toastOn("계정 정보를 확인해주세요.", "warn")
+                    }
                 } catch (error) {
-                    props.toastOn("계정 정보를 확인해주세요.", "warn")
+                    props.toastOn("네트워크 오류 - 관리자 문의", "error")
                 }
             }
         }
