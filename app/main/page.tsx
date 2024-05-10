@@ -4,20 +4,19 @@ import {Board, TEST} from "@/apis";
 import {useEffect} from "react";
 
 export default function List(props: any) {
-    async function test() {
-        await Board.getBoardList();
+    function authApiTest() {
+        localStorage.clear();
+        props.setCurrentPage('login');
+        props.toastOn("로그아웃 되었습니다.", "success")
     }
-
-    useEffect(() => {
-        test();
-    }, []);
-
     return (
         <main>
             <div className="form-structor">
                 <section className="content">
                     <div className="left-content">
-                        left
+                        <button onClick={() => authApiTest()}>
+                            AUTH API TEST
+                        </button>
                     </div>
                     <div className="right-content">
                         right

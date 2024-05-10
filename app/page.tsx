@@ -8,7 +8,9 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
-    const [currentPage, setCurrentPage] = useState<string>('login')
+    const [currentPage, setCurrentPage] = useState<string>('')
+    const [token, setToken] = useState<string>('')
+
     async function toastOn(toastMsg: string, type: string) {
         if (type == 'success') {
             toast.success(toastMsg, {
@@ -79,21 +81,35 @@ export default function Home() {
         }
     }
 
+    useEffect(
+        () => {
+            const token: string | null = localStorage.getItem("token");
+            if (token == '' || token == null) {
+                setCurrentPage("login")
+            } else {
+                setCurrentPage("main")
+            }
+        }, []
+    )
+
     return (
         <>
-            <ToastContainer />
+            <ToastContainer/>
             {
-                currentPage == 'login' ?
+                currentPage == 'login' || currentPage == '' ?
                     null :
                     <Sidenav setCurrentPage={setCurrentPage}/>
             }
             {
-                currentPage == 'login' ?
-                    <>
-                        <Auth toastOn={toastOn}/>
-                    </>
+                currentPage == '' ?
+                    null
                     :
-                    <Main/>
+                    currentPage == 'login' ?
+                        <Auth toastOn={toastOn} setCurrentPage={setCurrentPage}/>
+                        :
+                        currentPage == 'main' ?
+                            <Main setCurrentPage={setCurrentPage} toastOn={toastOn}/> :
+                            null
             }
         </>
     );

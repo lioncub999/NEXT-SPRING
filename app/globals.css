@@ -160,16 +160,19 @@ main {
 
 .form-structor {
     border-radius: 0 15px 15px 0;
-    height: 804.797px;
     width: 100%;
     position: relative;
     overflow: hidden;
     background: rgb(254, 254, 254);
 }
+.content {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
 
 .left-content {
     display: grid;
-    height : 780px;
+    height : 720px;
     background: #f6f7fb;
     margin: 15px;
     padding: 20px;
@@ -177,7 +180,7 @@ main {
 }
 .right-content {
     display: grid;
-    height : 780px;
+    height : 720px;
     background: #f6f7fb;
     margin: 15px;
     padding: 20px;
