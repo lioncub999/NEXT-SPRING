@@ -8,3 +8,4 @@ export interface APIResponse<T> {
 export * from './test';
 export * from './board';
 export * from './board/type';
+export * from './auth';
